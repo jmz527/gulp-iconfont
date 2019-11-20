@@ -38,6 +38,7 @@
     "gulp-spawn": "^0.4.4",
     "gulp-svg2ttf": "github:jmz527/gulp-svg2ttf#master",
     "gulp-svgicons2svgfont": "^5.0.1",
+    "gulp-ttf2eot": "github:hangy/gulp-ttf2eot#gulp4",
     "gulp-ttf2woff": "^1.1.0",
     "gulp-ttf2woff2": "^3.0.0",
     "multipipe": "^2.0.3",
