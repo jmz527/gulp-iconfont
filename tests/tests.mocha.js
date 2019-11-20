@@ -50,7 +50,6 @@ describe('gulp-iconfont', () => {
 
         it('should work', done => {
 
-
           gulp.src(path.join(__dirname, 'fixtures', 'iconsfont', '*.svg'), { buffer: false })
             .pipe(iconfont({
               fontName: 'iconsfont',
@@ -64,24 +63,25 @@ describe('gulp-iconfont', () => {
               assert.equal(files.length, 3);
               files2Buffers(files, contents => {
 
-          assert.deepEqual(
-            contents[0],
-            fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.ttf'))
-          );
-          assert.deepEqual(
-            contents[1],
-            fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.woff'))
-          );
-          assert.deepEqual(
-            contents[2],
-            fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.eot'))
-          );
-          done(); // eslint-disable-line
-        });
-            }));
+              assert.deepEqual(
+                contents[0],
+                fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.ttf'))
+              );
+              assert.deepEqual(
+                contents[1],
+                fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.woff'))
+              );
+              assert.deepEqual(
+                contents[2],
+                fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.eot'))
+              );
+              done(); // eslint-disable-line
+            });
+          }));
         });
 
         it('should work for only one font', done => {
+
           gulp.src(path.join(__dirname, 'fixtures', 'iconsfont', '*.svg'), { buffer: false })
             .pipe(iconfont({
               fontName: 'iconsfont',
@@ -95,16 +95,18 @@ describe('gulp-iconfont', () => {
               }
               assert.equal(files.length, 1);
               files2Buffers(files, contents => {
-                  assert.deepEqual(
-                      contents[0],
-                      fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.woff'))
-                  );
-                  done(); // eslint-disable-line
+                assert.deepEqual(
+                  contents[0],
+                  fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.woff'))
+                );
+                done(); // eslint-disable-line
               });
             }));
+
         });
 
         it('should output SVG font with svg added to formats', function(done) {
+
           this.timeout(5000);
           gulp.src(path.join(__dirname, 'fixtures', 'iconsfont', '*.svg'), { buffer: false })
             .pipe(iconfont({
@@ -143,6 +145,7 @@ describe('gulp-iconfont', () => {
                 done(); // eslint-disable-line
               });
             }));
+
         });
 
         it('should output WOFF2 font with woff2 added to formats', function(done) {
@@ -165,21 +168,22 @@ describe('gulp-iconfont', () => {
               }
               assert.equal(files.length, 3);
               files2Buffers(files, contents => {
-          assert.deepEqual(
-            contents[0],
-            fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.ttf'))
-          );
-          assert.deepEqual(
-            contents[1],
-            fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.woff2'))
-          );
-          assert.deepEqual(
-            contents[2],
-            fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.woff'))
-          );
-          done(); // eslint-disable-line
-        });
-            }));
+
+              assert.deepEqual(
+                contents[0],
+                fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.ttf'))
+              );
+              assert.deepEqual(
+                contents[1],
+                fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.woff2'))
+              );
+              assert.deepEqual(
+                contents[2],
+                fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.woff'))
+              );
+              done(); // eslint-disable-line
+            });
+          }));
         });
 
       });
@@ -187,6 +191,7 @@ describe('gulp-iconfont', () => {
       describe('in buffer mode', () => {
 
         it('should work', done => {
+
           gulp.src(path.join(__dirname, 'fixtures', 'iconsfont', '*.svg'), { buffer: true })
             .pipe(iconfont({
               fontName: 'iconsfont',
@@ -198,39 +203,44 @@ describe('gulp-iconfont', () => {
                 return;
               }
               assert.equal(files.length, 3);
-        files2Buffers(files, contents => {
-          assert.deepEqual(
-            contents[0],
-            fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.ttf'))
-          );
-          assert.deepEqual(
-            contents[1],
-            fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.woff'))
-          );
-          assert.deepEqual(
-            contents[2],
-            fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.eot'))
-          );
-          done(); // eslint-disable-line
-        });
+
+              files2Buffers(files, contents => {
+                assert.deepEqual(
+                  contents[0],
+                  fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.ttf'))
+                );
+                assert.deepEqual(
+                  contents[1],
+                  fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.woff'))
+                );
+                assert.deepEqual(
+                  contents[2],
+                  fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.eot'))
+                );
+                done(); // eslint-disable-line
+              });
             }));
+  
         });
 
         it('should emit an event with the codepoint mapping', done => {
+
           gulp.src(path.join(__dirname, 'fixtures', 'iconsfont', '*.svg'), { buffer: true })
             .pipe(iconfont({
               fontName: 'iconsfont',
               timestamp: generationTimestamp,
             }))
             .on('glyphs', codepoints => {
-        neatequal(codepoints,
-          JSON.parse(fs.readFileSync(
-            path.join(__dirname, 'expected', 'codepoints.json'), 'utf8'))
-        );
-        done();
+              neatequal(codepoints,
+                JSON.parse(fs.readFileSync(
+                  path.join(__dirname, 'expected', 'codepoints.json'), 'utf8'))
+              );
+              done();
             });
         });
+
         it('should work with autohinted iconsfont', done => {
+
           gulp.src(path.join(__dirname, 'fixtures', 'iconsfont', '*.svg'), { buffer: true })
             .pipe(iconfont({
               fontName: 'iconsfont',
@@ -281,13 +291,12 @@ describe('gulp-iconfont', () => {
                   expected
                 );
                 done();
-        });
-            }));
-        });
 
+              });
+            }));
+
+        });
       });
     });
-
   });
-
 });
